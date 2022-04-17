@@ -1,74 +1,36 @@
 #include "main.h"
 
 /**
- * print_char - Entry point
+ * _printf - Entry point
  *
- * @list: list of arguments
+ * @format: A string containing all the desired characters
  *
- * Description: Prints character to std out
+ * Description: Receives the main string and all the necessary parameters to
+ * print a formated string
  *
- * Return: Amount of characters printed.
+ * Return: A total count of the characters printed
  */
 
-int print_char(va_list list)
+int _printf(const char *format, ...)
 {
-	_putchar(va_arg(list, int));
-	return (1);
-}
+	int printed_chars;
+	con_vert f_list[] = {
+		{"c", print_char},
+		{"s", print_string},
+		{"%", print_percent},
+		{"d", print_integer},
+		{"i", print_integer},
+		{NULL, NULL}
+	};
+	va_list arg_list;
 
-/**
- * print_string - Entry point
- *
- * @list: list of arguments
- *
- * Description:  Prints a string to stdout
- *
- * Return: Amount of characters printed.
- */
+	if (format == NULL)
+		return (-1);
 
-int print_string(va_list list)
-{
-	int i;
-	char *str;
+	va_start(arg_list, format);
 
-	str = va_arg(list, char *);
-	if (str == NULL)
-		str = "(null)";
-	for (i = 0; str[i] != '\0'; i++)
-		_putchar(str[i]);
-	return (i);
-}
-
-/**
- * print_percent - Entry point
- *
- * @list: list of arguments
- *
- * Description: Prints the percent symbol to std out
- *
- * Return: Amount of characters printed.
- */
-
-int print_percent(__attribute__((unused))va_list list)
-{
-	_putchar('%');
-	return (1);
-}
-
-/**
- * print_integer - Entry Point
- *
- * @list: list of arguments
- *
- * Description: Prints an integer
- *
- * Return: Amount of characters printed.
- */
-
-int print_integer(va_list list)
-{
-	int num_length;
-
-	num_length = print_number(list);
-	return (num_length);
+	/*Calling parser function*/
+	printed_chars = parser(format, f_list, arg_list);
+	va_end(arg_list);
+	return (printed_chars);
 }
