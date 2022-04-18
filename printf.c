@@ -19,7 +19,6 @@ int printIdentifiers(char next, va_list arg)
 		{"s", print_str},i
 		{NULL, NULL}
 	};
-
 	for (functsIndex = 0; functs[functsIndex].indentifier != NULL; functsIndex++)
 	{
 		if (functs[functsIndex].indentifier[0] == next)
