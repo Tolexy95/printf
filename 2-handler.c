@@ -108,6 +108,5 @@ int print_rev(va_list arg)
 	{
 		_putchar(s[j]);
 	}
-
 	return (i);
 }
