@@ -1,5 +1,5 @@
-#ifndef HOLBERTON_H_
-#define HOLBERTON_H_
+#ifndef MAIN_H_
+#define MAIN_H_
 
 #include <stdlib.h>
 #include <stdarg.h>
@@ -33,4 +33,4 @@ int print_percent(va_list);
 int print_integer(va_list);
 int print_number(va_list);
 
-#endif /*HOLBERTON_H_*/
+#endif /*MAIN_H_*/
